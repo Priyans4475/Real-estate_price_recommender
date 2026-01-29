@@ -3,13 +3,20 @@ import pandas as pd
 import pickle
 import numpy as np
 
-# Load trained pipeline
-with open('pipelines.pkl', 'rb') as f:
+import os
+import pickle
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+PIPE_PATH = os.path.join(BASE_DIR, 'pipelines.pkl')
+DF_PATH = os.path.join(BASE_DIR, 'df.pkl')
+
+with open(PIPE_PATH, 'rb') as f:
     pipe = pickle.load(f)
 
-# Load dataframe used during training
-with open('df.pkl', 'rb') as f:
+with open(DF_PATH, 'rb') as f:
     X = pickle.load(f)
+
 
 st.title("House Price Prediction App")
 
